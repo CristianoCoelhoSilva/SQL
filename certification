@@ -1,3 +1,13 @@
+--ADD_MONTHS returns the date date plus integer months. A month is defined by the session parameter NLS_CALENDAR.
 SELECT TO_CHAR(ADD_MONTHS(hire_date, 1), 'DD-MON-YYYY') "Next month", HIRE_DATE
-  FROM HR.employees 
-  WHERE last_name = 'Baer';
+  FROM HR.employees
+
+--CEIL returns the smallest integer that is greater than or equal to n. The number n can always be written as the difference of an integer k and a positive fraction f such that 0 <= f < 1 and n = k - f. The value of CEIL is the integer k. Thus, the value of CEIL is n itself if and only if n is precisely an integer. 
+SELECT order_total, CEIL(order_total)
+  FROM oe.orders
+
+--LAST_DAY returns the date of the last day of the month that contains date. The return type is always DATE, regardless of the datatype of date.
+SELECT SYSDATE,
+   LAST_DAY(SYSDATE) "Last",
+   LAST_DAY(SYSDATE) - SYSDATE "Days Left"
+   FROM DUAL;
